@@ -1,21 +1,21 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
-{% block header %}{% endblock %}
-{% block content %}
-    <header id="head">
-        <div class="container">
-            <div class="row">
-                <h1 class="lead"><br></h1>
-                <p class="tagline"><br></p>
-                <p><a class="btn btn-default btn-lg" href="/game/selectAdverse" role="button">DEFIER UN JOUEUR</a>
-                    {% if session == false %}
-                        <a class="btn btn-action btn-lg" href="/register/index" role="button">S'INSCRIRE</a>
-                    {% endif %}
-                </p>
-            </div>
+{% block header %} <header id="head">
+    <div class="container">
+        <div class="row">
+            <h1 class="lead"><br></h1>
+            <p class="tagline"><br></p>
+            <p><a class="btn btn-default btn-lg" href="/game/selectAdverse" role="button">DEFIER UN JOUEUR</a>
+                {% if session == false %}
+                    <a class="btn btn-action btn-lg" href="/register/index" role="button">S'INSCRIRE</a>
+                {% endif %}
+            </p>
         </div>
-    </header>
+    </div>
+    </header>{% endblock %}
+{% block content %}
+
     <div class="container text-center"  id="users">
         <br> <br>
         <h2 class="thin">Les meilleurs combattants</h2>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="description">
                                 <h3> {{ user.login }} </h3>
-                                <h5> <strong> {{ user.point }} <br><hr>
+                                <h5> <strong> {{ user.point }} PTS <br><hr>
                                         {{ user.login }}</strong></h5>
                                 <p></p>
                             </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="description">
                                 <h3> {{ randomUser.login }} </h3>
-                                <h5> <strong> {{ randomUser.point }} <br><hr>
+                                <h5> <strong> {{ randomUser.point }} PTS <br><hr>
                                         {{ randomUser.login }}</strong></h5>
                                 <p>
 
