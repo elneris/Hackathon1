@@ -1,0 +1,111 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Accueil</a></li>
+            <li class="active">
+                page services
+            </li>
+        </ol>
+        <div class="row">
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Nos Servyers</h1>
+                </header>
+                <div class="row text-center animate-in" data-anim-type="fade-in-up" >
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad-bottom">
+                        <div class="navbar-collapse1">
+                            <ul class="nav navbar-nav pull-right">
+                                <li class="dropdown ">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filtrer les compétences <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/Service/index/0">Toute les compétences</a></li>
+                                        {% for service in services %}
+                                            <li><a href="/Service/index/{{ service.id }}">{{ service.label }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                {% for user in users %}
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <div class="team-wrapper">
+                            <div class="team-inner" style="background-image: url('/assets/images/users/{{ user.id }}.jpg')" >
+                                <a href="/#users"> <i class="fa fa-user" ></i></a>
+                            </div>
+                            <div class="description">
+                                <h3> {{ user.firstname }} {{ user.lastname }}</h3>
+                                <h5>
+                                    <strong>
+                                        {% include 'Inc/rate.html.twig' %}
+                                        <br><hr>
+                                        {{ user.label }}
+                                    </strong></h5>
+                                <p>
+                                    {{ user.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </article>
+        </div>
+            {% if totalPages > 1 %}
+                {# the number of first and last pages to be displayed #}
+                {% set extremePagesLimit = 3 %}
+                {# the number of pages that are displayed around the active page #}
+                {% set nearbyPagesLimit = 2 %}
+                <!-- REDIRECT_SCRIPT_URI par PATH_INFO-->
+                <div class="pagination">
+                    {% if currentPage > 1 %}
+                        <a href="{{ server.PATH_INFO }}/?page={{ currentPage - 1 }}">Previous</a>
+
+                        {% for i in range(1, extremePagesLimit) if ( i < currentPage - nearbyPagesLimit ) %}
+                            <a href="{{ server.PATH_INFO }}/?page={{ i }}">{{ i }}</a>
+                        {% endfor %}
+
+                        {% if extremePagesLimit + 1 < currentPage - nearbyPagesLimit %}
+                            <span class="sep-dots">...</span>
+                        {% endif %}
+
+                        {% for i in range(currentPage-nearbyPagesLimit, currentPage-1) if ( i > 0 ) %}
+                            <a href="{{ server.PATH_INFO }}/?page={{ i }}">{{ i }}</a>
+                        {% endfor %}
+                    {% elseif showAlwaysFirstAndLast %}
+                        <span class="disabled">Previous</span>
+                    {% endif %}
+
+                    <a href=""
+                       class="active">{{ currentPage }}</a>
+
+                    {% if currentPage < totalPages %}
+                        {% for i in range(currentPage+1, currentPage + nearbyPagesLimit) if ( i <= totalPages ) %}
+                            <a href="{{ server.PATH_INFO }}/?page={{ i }}">{{ i }}</a>
+                        {% endfor %}
+
+                        {% if  (totalPages - extremePagesLimit) > (currentPage + nearbyPagesLimit) %}
+                            <span class="sep-dots">...</span>
+                        {% endif %}
+
+                        {% for i in range(totalPages - extremePagesLimit+1, totalPages) if ( i > currentPage + nearbyPagesLimit ) %}
+                            <a href="{{ server.PATH_INFO }}/?page={{ i }}">{{ i }}</a>
+                        {% endfor %}
+
+                        <a href="{{ server.PATH_INFO }}/?page={{ currentPage + 1 }}">Next</a>
+                    {% elseif showAlwaysFirstAndLast %}
+                        <span class="disabled">Next</span>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        <hr>
+        <p>* : Servyer non évalué </p>
+    </div>
+
+{% endblock %}

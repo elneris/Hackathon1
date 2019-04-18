@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Accueil</a></li>
+            <li class="active">page d'enregistrement</li>
+        </ol>
+        <div class="row">
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">S'enregistrer</h1>
+                </header>
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Enregistrer un compte</h3>
+                            <p class="text-center text-muted">Si vous avez déjà un compte, vous pouvez vous connecter ici : <br><a href="/login/index">Se connecter</a></p>
+                            <hr>
+                            {% for error in errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error }}</strong>
+                            </div>
+                            {% endfor %}
+                            {% if succes %}
+                                <div class="alert alert-success">
+                                    <strong>{{ succes }}</strong>
+                                </div>
+                            {% endif %}
+                            <form method="post" action="">
+                                <div class="top-margin">
+                                    <label for="login">login <span class="text-danger">*</span></label>
+                                    <input type="text" id="email" name="login" class="form-control" value="{{ post.login }}" required>
+                                </div>
+                                <div class="row top-margin">
+                                    <div class="col-sm-6">
+                                        <label for="password1">Mot de passe <span class="text-danger">*</span></label>
+                                        <input type="password" id="password1" name="password" class="form-control" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="password2">Confirmation Mot de passe <span class="text-danger">*</span></label>
+                                        <input type="password" id="password2" name="repeatPassword" class="form-control"  required>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" name="submit" type="submit">Envoyer</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endblock %}

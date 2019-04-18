@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Accueil</a></li>
+            <li class="active">page de connexion</li>
+        </ol>
+        <div class="row">
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Se Connecter</h1>
+                </header>
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Accéder à votre compte</h3>
+                            <p class="text-center text-muted">Si vous n'êtes pas encore enregistré, vous pouvez vous inscrire ici : <a href="/register/index">s'enregistrer</a>.</p>
+                            <hr>
+                            {% for error in errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error }}</strong>
+                                </div>
+                            {% endfor %}
+                            <form method="post" action="">
+                                <div class="top-margin">
+                                    <label for="login">Login<span class="text-danger">*</span></label>
+                                    <input id="login" name="login" type="text" class="form-control" value="{{ post.login }}">
+                                </div>
+                                <div class="top-margin">
+                                    <label for="password">Password <span class="text-danger">*</span></label>
+                                    <input id="password" name="password" type="password" class="form-control">
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" name="submit" type="submit">Connexion</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endblock %}
