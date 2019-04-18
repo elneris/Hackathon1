@@ -25,9 +25,11 @@ class HomeController extends AbstractController
     public function index()
     {
         $userManager = new UserManager();
-        $users = $userManager->bestUsers();
+        $bestUsers = $userManager->bestUsers();
 
-        return $this->twig->render('Home/index.html.twig',['session'=>$_SESSION, 'users'=>$users]);
+        $randomUsers = $userManager->randomUsers() ;
+
+        return $this->twig->render('Home/index.html.twig',['session'=>$_SESSION, 'users'=>$bestUsers,'randomUsers'=>$randomUsers]);
     }
 
 }
