@@ -24,11 +24,20 @@ class GameController extends AbstractController
         return $this->twig->render('Game/selectAdverse.html.twig', ['usersWithProfil' => $usersWithProfil]);
     }
 
-    public function fight($id)
+    public function fight($idAdverse)
     {
 
-        var_dump($_SESSION['id']);
-        return $this->twig->render('Game/fight.html.twig');
+        $userManager = new UserManager();
+
+        $mainUser = $userManager->selectIdAndLoginById($_SESSION['id']);
+        $userAdverse = $userManager->selectIdAndLoginById($idAdverse);
+
+        $allUsers[0]= $mainUser;
+        $allUsers[1] = $userAdverse;
+
+        $usersWithProfil = $this->getAllUserPersoById($allUsers);
+
+        return $this->twig->render('Game/fight.html.twig', ['mainUser' => $usersWithProfil[0], 'userAdverse' => $usersWithProfil[1]]);
     }
 
 
@@ -43,12 +52,12 @@ class GameController extends AbstractController
 
         foreach ($dbUsers as $dbUser) {
             $apiUser = $userManager->selectCharactersById($dbUser['id_character']);
+
             $user = (object) array_merge((array) $apiUser, (array) $dbUser);
 
             $result[] = $user;
 
         }
-
         return $result;
     }
 }
