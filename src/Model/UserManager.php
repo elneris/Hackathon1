@@ -27,6 +27,7 @@ class UserManager extends AbstractManager
         return $statement->fetchAll();
     }
 
+
     public function insert($user)
     {
         $statement = $this->pdo->prepare("INSERT INTO $this->table (login, password, id_character) 
@@ -47,4 +48,10 @@ class UserManager extends AbstractManager
         return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 3" )->fetchAll();
 
     }
+
+    public function selectAllWithIdAndLogin()
+    {
+        return $this->pdo->query('SELECT id,login,id_character FROM ' . $this->table)->fetchAll();
+    }
+
 }

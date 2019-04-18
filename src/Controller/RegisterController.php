@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-use App\Model\CharacterManager;
 use App\Model\UserManager;
 
 class RegisterController extends AbstractController
@@ -20,12 +19,14 @@ class RegisterController extends AbstractController
     public function index()
     {
         if (isset($_SESSION['login'])) {
+
             header('Location: /Home/index');
             exit;
         }
         $errors = [];
         if (isset($_POST['submit'])) {
             $userManager = new UserManager();
+
             $userExist = $userManager->selectLogin($_POST['login']);
             if (isset($userExist[0]['login']) && $userExist[0]['login'] == $_POST['login']) {
                 $errors['alreadyUse'] = 'Ce pseudo est déjà utilisé';
@@ -51,6 +52,7 @@ class RegisterController extends AbstractController
             }
 
             if (count($errors) == 0) {
+
                 $characterManager = new UserManager();
                 $character = $characterManager->selectCharactersRandom();
                 $user = [
@@ -61,6 +63,7 @@ class RegisterController extends AbstractController
                 $succes = 'Votre inscription à bien été enregistré';
                 $userManager->insert($user);
                 return $this->twig->render('Register/index.html.twig', ['post'=> $_POST,'succes' => $succes]);
+
             }
         }
         return $this->twig->render('Register/index.html.twig', ['post'=> $_POST,'errors' => $errors]);
