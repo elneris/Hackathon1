@@ -6,9 +6,11 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-left">
                 <li {% if pageIndex %}class="active"{% endif %}><a href="/">Accueil</a></li>
+                <li {% if pageIndex %}class="active"{% endif %}><a href="/">Classement</a></li>
+                <li {% if pageIndex %}class="active"{% endif %}><a href="/Game/selectAdverse">Défier un joueur</a></li>
                 {% if session %}
                         {% if session.login %}
-                            <li {% if pageMember %}class="active"{% endif %}><a href="/Member/index">Espace Membres</a></li>
+                            <li {% if pageMember %}class="active"{% endif %}><a href="/Profile/index">Page Profil</a></li>
                         {% endif %}
                 {% endif %}
             </ul>
