@@ -7,17 +7,13 @@
             <ul class="nav navbar-nav pull-left">
                 <li {% if pageIndex %}class="active"{% endif %}><a href="/">Accueil</a></li>
                 {% if session %}
-                        {% if session.status == 0 %}
+                        {% if session.login %}
                             <li {% if pageMember %}class="active"{% endif %}><a href="/Member/index">Espace Membres</a></li>
                         {% endif %}
-                        {% if session.status == 1 %}
-                            <li {% if pageAdmin %}class="active"{% endif %}><a href="/Admin/index">Espace Admin</a></li>
-                        {% endif %}
-
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav pull-right">
-                {% if session %}
+                {% if session.login %}
                     <li><a class="btn" href="/Login/logout">Se Deconnecter</a></li>
                 {% else %}
                     <li><a class="btn" href="/Login/index">Se Connecter</a></li>
