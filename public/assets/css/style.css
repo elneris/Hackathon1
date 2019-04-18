@@ -93,10 +93,20 @@ body {
 /********Select Adverse Card*******/
 /**********************************/
 
-h5 {
+h1{
+  text-align:center;
+  padding-bottom:80px;
+}
+.card h5 {
   font-size: 1.28571429em;
   font-weight: 700;
   line-height: 1.2857em;
   margin: 0;
+  text-align: center;
+  padding-bottom: 50px;
 }
 
+.card img{
+  width: 100%;
+  height: 200px;
+}
