@@ -1,5 +1,4 @@
 /* Header */
-#head { background:#181015 url( ../images/bg_header.jpg) no-repeat; background-size: cover; min-height:520px; text-align: center; padding-top:240px; color:white; font-family:"Open sans", Helvetica, Arial; font-weight:300; }
 #head.secondary { height:100px; min-height: 100px; padding-top:0px; }
 	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:white; line-height:1.15em; } 
 	#head .tagline { color:rgba(255,255,255,0.75); margin-bottom:25px; }
@@ -14,6 +13,11 @@
 @media (max-width: 767px) {
 	#head { min-height:420px; padding-top:160px; }
 	#head .lead { font-size: 34px; }
+}
+
+body{
+	background-image: url("../images/wallpaper.png");
+	background-size: 100%;
 }
 
 
@@ -47,7 +51,6 @@
 	-moz-background-size: cover;
 	-webkit-background-size: cover;
 	padding: 150px 0 10px;
-	/*background-image: url('../img/girl-big.jpg');*/
 	border-top: 1px solid #fff;
 	border-right: 1px solid #fff;
 	border-left: 1px solid #fff;
