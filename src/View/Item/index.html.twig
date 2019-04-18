@@ -1,7 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
- {{ dump(api) }}
-
+    <h1>Items</h1>
+    <ul>
+        {% for item in items %}
+            <li><a href="/item/show/{{ item.id | raw }}">{{ item.id }}. {{ item.title | raw}}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/item/add">Ajouter</a>
 {% endblock %}
