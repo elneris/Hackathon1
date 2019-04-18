@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+
 class HomeController extends AbstractController
 {
 
@@ -21,6 +23,12 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-       // return $this->twig->render('Home/index.html.twig');
+        $userMAnager = new UserManager();
+
+        $users = $userMAnager->selectEgg();
+var_dump($users);
+exit;
+
+        return $this->twig->render('Home/index.html.twig', ['user' => $users]);
     }
 }

@@ -20,6 +20,8 @@ abstract class AbstractManager
      */
     protected $pdo; //variable de connexion
 
+    protected $api;
+
     /**
      * @var string
      */
@@ -39,6 +41,7 @@ abstract class AbstractManager
         $this->table = $table;
         $this->className = __NAMESPACE__ . '\\' . ucfirst($table);
         $this->pdo = (new Connection())->getPdoConnection();
+        $this->api = (new Connection())->getApiConnection();
     }
 
     /**
@@ -58,6 +61,12 @@ abstract class AbstractManager
      *
      * @return array
      */
+
+    /**
+     * @return mixed
+     */
+
+
     public function selectOneById(int $id)
     {
         // prepared request
@@ -66,5 +75,52 @@ abstract class AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function selectEgg()
+    {
+        $api = $this->api->request('GET', '/api/eggs');
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
+
+    public function selectEggRandom()
+    {
+        $api = $this->api->request('GET', '/api/eggs/random');
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
+
+    public function selectCharacters()
+    {
+        $api = $this->api->request('GET', '/api/characters');
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
+
+    public function selectCharactersRandom()
+    {
+        $api = $this->api->request('GET', '/api/characters/random');
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
+
+    public function selectEggById($id)
+    {
+        $api = $this->api->request('GET', "/api/eggs/$id");
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
+    public function selectCharactersById($id)
+    {
+        $api = $this->api->request('GET', "/api/characters/$id");
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
     }
 }
