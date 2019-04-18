@@ -11,6 +11,7 @@
 
 namespace App\Model;
 
+use GuzzleHttp\Client;
 use \PDO;
 
 /**
@@ -31,6 +32,8 @@ class Connection
      */
     private $pdoConnection;
 
+    private $apiConnection;
+
     /**
      * Initialize connection
      *
@@ -38,6 +41,7 @@ class Connection
      */
     public function __construct()
     {
+        $this->apiConnection = new Client(['base_uri' => 'http://easteregg.wildcodeschool.fr/api']);
         try {
             $this->pdoConnection = new PDO(
                 'mysql:host=' . APP_DB_HOST . '; dbname=' . APP_DB_NAME . '; charset=utf8',
@@ -63,5 +67,10 @@ class Connection
     public function getPdoConnection(): PDO
     {
         return $this->pdoConnection;
+    }
+
+    public function getApiConnection()
+    {
+        return $this->apiConnection;
     }
 }

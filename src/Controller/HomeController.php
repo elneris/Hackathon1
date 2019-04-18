@@ -8,6 +8,8 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+
 class HomeController extends AbstractController
 {
 
@@ -21,6 +23,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $apiManager = new UserManager();
+        $result = $apiManager->selectEggRandom();
+
+        return $this->twig->render('Home/index.html.twig', ['api' => $result]);
     }
 }
