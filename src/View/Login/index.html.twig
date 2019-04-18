@@ -26,8 +26,8 @@
                             {% endfor %}
                             <form method="post" action="">
                                 <div class="top-margin">
-                                    <label for="email">Email <span class="text-danger">*</span></label>
-                                    <input id="email" name="email" type="text" class="form-control" value="{{ post.email }}">
+                                    <label for="login">Login<span class="text-danger">*</span></label>
+                                    <input id="login" name="login" type="text" class="form-control" value="{{ post.login }}">
                                 </div>
                                 <div class="top-margin">
                                     <label for="password">Password <span class="text-danger">*</span></label>
@@ -35,9 +35,6 @@
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <div class="col-lg-8">
-                                        <b><a href="">Mot de passe oublié ?</a></b>
-                                    </div>
                                     <div class="col-lg-4 text-right">
                                         <button class="btn btn-action" name="submit" type="submit">Connexion</button>
                                     </div>

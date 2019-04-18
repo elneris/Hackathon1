@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\ItemManager;
 use App\Model\UserManager;
 
 class HomeController extends AbstractController
@@ -24,6 +25,6 @@ class HomeController extends AbstractController
     public function index()
     {
 
-        return $this->twig->render('Home/index.html.twig');
     }
+
 }

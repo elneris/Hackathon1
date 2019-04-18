@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\CharacterManager;
 use App\Model\UserManager;
 
 class RegisterController extends AbstractController
@@ -18,31 +19,24 @@ class RegisterController extends AbstractController
      */
     public function index()
     {
-        if (isset($_SESSION['email'])) {
+        if (isset($_SESSION['login'])) {
             header('Location: /Home/index');
             exit;
         }
         $errors = [];
         if (isset($_POST['submit'])) {
             $userManager = new UserManager();
-            $userExist = $userManager->selectEmail($_POST['email']);
-            if (isset($userExist[0]['email']) && $userExist[0]['email'] == $_POST['email']) {
-                $errors['alreadyUse'] = 'Cette email est déjà utilisé';
+            $userExist = $userManager->selectLogin($_POST['login']);
+            if (isset($userExist[0]['login']) && $userExist[0]['login'] == $_POST['login']) {
+                $errors['alreadyUse'] = 'Ce pseudo est déjà utilisé';
             } else {
-                if (empty($_POST['firstname']) || empty($_POST['lastname']) ||
-                    empty($_POST['email']) || empty($_POST['password']) || empty($_POST['repeatPassword'])) {
+                if (empty($_POST['login']) || empty($_POST['password']) || empty($_POST['repeatPassword'])) {
                     $errors['empty'] = 'Veuillez remplir tout les champs';
-                } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                    $errors['email'] = 'Veuillez entrer un email valide';
-                } elseif (!isset($_POST['charte']) || $_POST['charte'] != 'check') {
-                    $errors['charte'] = 'Veuillez lire les Termes & Conditions d\'utilisation.';
                 } else {
-                    $firstname = htmlspecialchars(trim($_POST['firstname']));
-                    $lastname = htmlspecialchars(trim($_POST['lastname']));
-                    $email = $_POST['email'];
+                    $login = htmlspecialchars(trim($_POST['login']));
                     $password = htmlspecialchars(trim($_POST['password']));
                     $repeatPassword = htmlspecialchars(trim($_POST['repeatPassword']));
-                    if ($firstname && $lastname && $email && $password && $repeatPassword) {
+                    if ($login && $password && $repeatPassword) {
                         if (strlen($password) < 4) {
                             $errors['passwordLen'] = 'Votre mot de passe est trop court';
                         } else {
@@ -57,11 +51,12 @@ class RegisterController extends AbstractController
             }
 
             if (count($errors) == 0) {
+                $characterManager = new UserManager();
+                $character = $characterManager->selectCharactersRandom();
                 $user = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'email' => $email,
+                    'login'=> $login,
                     'password' => $password,
+                    'id_character' => $character->id
                 ];
                 $succes = 'Votre inscription à bien été enregistré';
                 $userManager->insert($user);
