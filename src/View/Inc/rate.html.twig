@@ -1,0 +1,12 @@
+{% if user.average > 0%}
+    {% for i in 0..user.average - 1 %}
+        &#9733
+    {% endfor %}
+    {% if user.average != 5 %}
+        {% for i in 0..5 - user.average -1 %}
+            &#9734
+        {% endfor %}
+    {% endif %}
+{% else %}
+    N/C*
+{% endif %}
