@@ -54,4 +54,9 @@ class UserManager extends AbstractManager
         return $this->pdo->query('SELECT id,login,id_character FROM ' . $this->table)->fetchAll();
     }
 
+    public function selectIdAndLoginById($id)
+    {
+        return $this->pdo->query("SELECT id,login,id_character FROM $this->table WHERE id = $id")->fetch();
+    }
+
 }
