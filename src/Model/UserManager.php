@@ -37,4 +37,8 @@ class UserManager extends AbstractManager
 
         return $statement->execute();
     }
+    public function bestUsers()
+    {
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3" )->fetchAll();
+    }
 }
