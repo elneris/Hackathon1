@@ -2,5 +2,7 @@
 
 {% block content %}
     <h1>Hello Wilder !</h1>
-    {{ api.name }}
+    {% for user in api %}
+    {{ user.name }}
+    {% endfor %}
 {% endblock %}
