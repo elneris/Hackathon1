@@ -6,6 +6,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-left">
                 <li {% if pageIndex %}class="active"{% endif %}><a href="/">Accueil</a></li>
+<<<<<<< HEAD
                 {% if session %}
                         {% if session.login %}
                             <li {% if pageMember %}class="active"{% endif %}><a href="/Member/index">Espace Membres</a></li>
@@ -14,6 +15,22 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 {% if session.login %}
+=======
+                <li {% if pageService %}class="active"{% endif %}><a href="/Service/index/0">Service</a></li>
+                <li {% if pageContact %}class="active"{% endif %}><a href="/Contact/index">Contact</a></li>
+                {% if session %}
+                        {% if session.status == 0 %}
+                            <li {% if pageMember %}class="active"{% endif %}><a href="/Member/index">Espace Membres</a></li>
+                        {% endif %}
+                        {% if session.status == 1 %}
+                            <li {% if pageAdmin %}class="active"{% endif %}><a href="/Admin/index">Espace Admin</a></li>
+                        {% endif %}
+
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                {% if session %}
+>>>>>>> Playing_Game
                     <li><a class="btn" href="/Login/logout">Se Deconnecter</a></li>
                 {% else %}
                     <li><a class="btn" href="/Login/index">Se Connecter</a></li>
