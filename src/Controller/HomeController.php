@@ -23,12 +23,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $userMAnager = new UserManager();
-
-        $users = $userMAnager->selectEgg();
-var_dump($users);
-exit;
-
-        return $this->twig->render('Home/index.html.twig', ['user' => $users]);
+        return $this->twig->render('Home/index.html.twig');
     }
 }

@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/">Accueil</a></li>
+            <li class="active">page contact</li>
+        </ol>
+        <div class="row">
+            <article class="col-sm-9 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Contacter nous</h1>
+                </header>
+                <p>
+                </p>
+                <br>
+                {% for error in errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+                {% if succes %}
+                    <div class="alert alert-success">
+                        <strong>{{ succes }}</strong>
+                    </div>
+                {% endif %}
+                <form method="post" action="">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input name="firstname" class="form-control" type="text" placeholder="Prénom" value="{{ post.firstname }}">
+                        </div>
+                        <div class="col-sm-4">
+                            <input name="lastname" class="form-control" type="text" placeholder="Nom" value="{{ post.lastname }}">
+                        </div>
+                        <div class="col-sm-4">
+                            <input name="email" class="form-control" type="email" placeholder="Email" value="{{ post.email }}">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <textarea name="content" value="content" placeholder="Votre message" class="form-control" rows="9">{{ post.content }}</textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6 text-right">
+                            <input class="btn btn-action" name="submit" type="submit" value="Envoyé">
+                        </div>
+                    </div>
+                </form>
+            </article>
+            <aside class="col-sm-3 sidebar sidebar-right">
+                <div class="widget">
+                    <h4>Addresse</h4>
+                    <address>
+                        9 ALLEE SERR, 33100 BORDEAUX
+                    </address>
+                    <h4>Telephone:</h4>
+                    <address>
+                        +33 6 66 96 17 77
+                    </address>
+                </div>
+            </aside>
+        </div>
+    </div>
+{% endblock %}
+
+{% block ckeditor %}
+    <script>CKEDITOR.replace( 'content' );</script>
+{% endblock %}

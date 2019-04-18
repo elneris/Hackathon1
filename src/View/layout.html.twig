@@ -4,18 +4,46 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Site de service de prestation entre particuliers">
+    <meta name="author" content="Deadly Group">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Index{% endblock %}</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-    {% block stylesheet %}{% endblock %}
-    <link rel="icon" href="/assets/images/favicon.png">
+    {% block stylesheet %}
+        <link rel="shortcut icon" href="/assets/images/gt_favicon.png">
+
+        <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap-theme.css" media="screen" >
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+    {% endblock %}
+    <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+
 </head>
 
-<body>
+<body class="home">
 
-{% block content %}{% endblock %}
-{% block javascript %}{% endblock %}
+    {% include 'Inc/nav.html.twig' %}
+
+    {% block header %}
+        <header id="head" class="secondary"></header>
+    {% endblock %}
+    {% block content %}{% endblock %}
+
+    {% include 'Inc/footer.html.twig' %}
+
+    {% block javascripts %}
+        <script src="/assets/js/html5shiv.js"></script>
+        <script src="/assets/js/respond.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+
+    <script>CKEDITOR.config.autoParagraph = false;</script>
+    <script>CKEDITOR.replace( 'title' );</script>
+    {% block ckeditor %}<script>CKEDITOR.replace( 'content' );</script>{% endblock %}
 </body>
 </html>
 
