@@ -23,9 +23,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $apiManager = new UserManager();
-        $result = $apiManager->selectCharacters();
 
-        return $this->twig->render('Home/index.html.twig', ['api' => $result]);
+        return $this->twig->render('Home/index.html.twig');
     }
 }

@@ -1,8 +1,112 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Accueil{% endblock %}
+{% block header %}{% endblock %}
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    {% for user in api %}
-    {{ user.name }}
-    {% endfor %}
+    <header id="head">
+        <div class="container">
+            <div class="row">
+                <h1 class="lead">SERVYY</h1>
+                <p class="tagline">LES SERVICES QUI VOUS CHANGENT LA VIE</p>
+                <p><a class="btn btn-default btn-lg" href="/service/index/0" role="button">LISTE DES SERVICES</a>
+                    {% if session == false %}
+                        <a class="btn btn-action btn-lg" href="/register/index" role="button">S'INSCRIRE</a>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </header>
+    <div class="container text-center"  id="users">
+        <br> <br>
+        <h2 class="thin">Le meilleur endroit pour trouver de l'aide</h2>
+        <p class="text-center">
+            100% confiance - Profils évalués
+        </p>
+        <section>
+            <div class="container">
+                <div class="row text-center header animate-in" data-anim-type="fade-in-up">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h3>Nos Servyers </h3>
+                        <hr />
+                    </div>
+                </div>
+                <div class="row animate-in" data-anim-type="fade-in-up">
+                    {% for user in users %}
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <div class="team-wrapper">
+                            <div class="team-inner" style="background-image: url('/assets/images/users/{{ user.id }}.jpg')" >
+                                <a href="/#users"> <i class="fa fa-user" ></i></a>
+                            </div>
+                            <div class="description">
+                                <h3> {{ user.firstname }} {{ user.lastname }}</h3>
+                                <h5> <strong> {% include 'Inc/rate.html.twig' %} <br><hr>
+                                        {{ user.label }}</strong></h5>
+                                <p>
+                                    {{ user.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="jumbotron top-space">
+        <div class="container">
+            <h3 class="text-center thin">VOUS CHERCHEZ / ON VOUS TROUVE</h3>
+            <div class="row">
+                {% for service in services %}
+                <div class="col-md-3 col-sm-6 highlight">
+                    <div class="h-caption"><i class="fa fa-5"><img class="" src="/assets/images/icone/{{ service.id }}.png" alt="{{ service.label }}"></i>
+                        <a class="btn btn-default btn-lg" href="/service/index/{{ service.id }}">{{ service.label }}</a></div>
+                    <div class="h-body text-center">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="text-center top-space">A PROPOS</h2>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Pourquoi Servyy ?</h3>
+                <p>
+                    Depuis 2018, de nouvelles alternatives arrivent grâce à l’essor des nouvelles technologies, et au changement des modes de vies et de consommation.
+                    Le service entre particulier est une réponse intelligente à la crise économique : grâce à cette nouvelle pratique, des milliers de particuliers peuvent désormais rendre service dans leur quartier tout en échangeant leurs compétences avec d’autres particuliers.
+                    Le principe est simple: mettre en relation un prestataire (une personne proposant un coup de main pour des petits services en bricolage, déménagement, nettoyage...) et un particuler en toute sécurité et convivialité.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3>La confiance et le partage</h3>
+                <p>
+                    Les Servyers sont évalués après chaque mission effectuée. Ces notes de confiance ont deux objectifs : rassurer les particuliers et permettre aux servyers de montrer aux autres membres qu’ils sont fiables et compétents. On vous souhaite la bienvenue dans une nouvelle ère, celle de la confiance et du partage de compétences entre membres de la communauté !
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Comment çà marche ?</h3>
+                <p>
+                    1. Inscrivez vous et cherchez le servyer qui correspond a votre besoin <br>
+                    2. Les servyers disponibles et compétents vous proposent leurs services <br>
+                    3. Evaluez et laissez un avis à votre servyer une fois le job terminé
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h3>Vous voulez proposez vos services ?</h3>
+                <p>
+                    1. Inscrivez vous et renseignez vos compétences <br>
+                    2. Un administrateur devra confirmer votre compte <br>
+                    3. Attendez le contact d'un autre servyer
+                </p>
+            </div>
+        </div>
+        <div class="jumbotron top-space">
+            <h4>Si vous avez d'autres questions, n'hésitez pas à contacter un administrateur grâce au formulaire de contact !</h4>
+            <p class="text-right"><a class="btn btn-primary btn-large" href="/contact/index">Contact »</a></p>
+        </div>
+    </div>
 {% endblock %}

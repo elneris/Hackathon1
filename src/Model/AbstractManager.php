@@ -108,4 +108,19 @@ abstract class AbstractManager
         $api = $api->getContents();
         return json_decode($api);
     }
+
+    public function selectEggById($id)
+    {
+        $api = $this->api->request('GET', "/api/eggs/$id");
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
+    public function selectCharactersById($id)
+    {
+        $api = $this->api->request('GET', "/api/characters/$id");
+        $api = $api->getBody();
+        $api = $api->getContents();
+        return json_decode($api);
+    }
 }

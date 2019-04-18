@@ -1,6 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    <header id="head" class="secondary"></header>
     <h1>Add a new item</h1>
     {% include 'Item/_form.html.twig' %}
+{% endblock %}
+
+{% block ckeditor %}
+    <script>CKEDITOR.replace( 'title' );</script>
 {% endblock %}
