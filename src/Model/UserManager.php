@@ -40,12 +40,18 @@ class UserManager extends AbstractManager
     }
     public function bestUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3" )->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3")->fetchAll();
     }
+
+    public function tenUsers()
+    {
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 10")->fetchAll();
+    }
+
 
     public function randomUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 3" )->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 4" )->fetchAll();
 
     }
 
@@ -56,7 +62,7 @@ class UserManager extends AbstractManager
 
     public function selectIdAndLoginById($id)
     {
-        return $this->pdo->query("SELECT id,login,id_character FROM $this->table WHERE id = $id")->fetch();
+        return $this->pdo->query("SELECT id,login,id_character,point FROM $this->table WHERE id = $id")->fetch();
     }
 
     public function addPointIfWin($id)

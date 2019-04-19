@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Selectionner un adversaire{% endblock %}
+{% block title %}Sélectionner un adversaire{% endblock %}
 
 {% block content %}
-    <h1>Selectionner un adversaire</h1>
+    <h1>Sélectionner un adversaire</h1>
     <div class="container">
     <div class="row">
     {% for user in usersWithProfil %}
@@ -11,7 +11,7 @@
                 <div class="card">
                     <a href="fight/{{ user.id }}"><img class="card-img-top" src="{{ user.image }}"></a>
                     <div class="card-block">
-                        <h5 class="text-bold">{{ user.login }}</h5>
+                        <h5 class="text-bold">{{ user.login | capitalize }}</h5>
                     </div>
                 </div>
             </div>

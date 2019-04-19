@@ -1,15 +1,22 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Battez-vous{% endblock %}
+{% block title %}Battez-vous!{% endblock %}
 
 {% block content %}
+
     <div class="container">
         <h1>Fight</h1>
+        <div class="carte">
         <div class="row">
-            <div class="col-12 col-md-4"> <img src="{{ mainUser.image }}" alt="profil">  {{ mainUser.login }}</div>
-            <div class="col-12 col col-md-4">VERSUS</div>
-            <div class="col-12 col-md-4"> <img src="{{ userAdverse.image }}" alt="profil">  {{ userAdverse.login }}</div>
-            <a class="col-12 col-md-4" href="/game/fightResult/{{ userAdverse.id }}">BOUTON COMBAT</a>
+            <div class="titleName">{{ mainUser.login | upper }}</div>
+            <div class="col-12 col-md-4"> <img src="{{ mainUser.image }}" alt="profil"></div>
+            <div class="col-12 col col-md-4"><img src="/assets/images/versus.png"></div>
+            <div class="col-12 col-md-4"> <img src="{{ userAdverse.image }}" alt="profil">
+            <div class="titleName">{{ userAdverse.login | upper }}</div>
+            </div>
+            <a class="btn_fight" href="/Game/fightResult/{{ userAdverse.id }}">BOUTON COMBAT</a>
         </div>
     </div>
+    </div>
+
 {% endblock %}
