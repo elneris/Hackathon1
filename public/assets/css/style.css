@@ -215,3 +215,11 @@ h1{
 .cardtop img{
   width: 40%;
 }
+
+@media (max-width: 640px) {
+  .oeuf3 {
+    position: relative;
+    top: 0px;
+    right: 0;
+  }
+}
