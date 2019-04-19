@@ -38,11 +38,15 @@ class ProfileController extends AbstractController
         $eggs = $eggsManager->countEggs();
         foreach ($eggs as $egg => $value){
             if ($value['id_user'] == $_SESSION['id']){
-                $countEggs = $value['COUNT(id_egg)'];
-            }else {
+                $countEgg = $value['COUNT(id_egg)'];
+            }if($value['id_user'] != $_SESSION['id']) {
                 $countEggs = 0;
             }
         }
+        if (isset($countEgg)){
+            $countEggs = $countEgg;
+        }
+
         $random = [];
         $randomManager = new UserManager();
         $random[0] = $randomManager->selectCharactersRandom();
