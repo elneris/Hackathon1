@@ -19,6 +19,5 @@ if (class_exists($controller) && method_exists(new $controller(), $method)) {
     echo call_user_func_array([new $controller(), $method], $vars);
 } else {
     header("HTTP/1.0 404 Not Found");
-    echo '404 - Page not found';
-    exit();
+    include '404.html';
 }
