@@ -4,6 +4,8 @@
 namespace App\Controller;
 
 
+use App\Model\UserManager;
+
 class ProfileController extends AbstractController
 {
     public function index()
@@ -12,7 +14,20 @@ class ProfileController extends AbstractController
             header('Location: /Home/index');
             exit;
         }
-        return $this->twig->render('Profile/index.html.twig',['session'=>$_SESSION]);
+        $result = [];
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['id']);
+        $apiUser = $userManager->selectCharactersById($user['id_character']);
 
+        $userAll = (array) array_merge((array) $apiUser, (array) $user);
+
+        $skills = $userAll['skills'];
+        foreach ($skills as $skill => $value){
+            $results[$skill] = explode(':',$value);
+        }
+
+        $result[] = $userAll;
+
+        return $this->twig->render('Profile/index.html.twig', ['user' => $result,'skill'=>$results,'session'=>$_SESSION]);
     }
 }
