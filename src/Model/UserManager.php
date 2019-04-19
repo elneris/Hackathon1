@@ -59,4 +59,40 @@ class UserManager extends AbstractManager
         return $this->pdo->query("SELECT id,login,id_character FROM $this->table WHERE id = $id")->fetch();
     }
 
+    public function addPointIfWin($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET win = win + 1 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function addPointIfLoose($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET loose = loose + 1 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function addPointIfEqual($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET equal = equal + 1 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function addPointInPoint($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET point = point + 3 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
 }

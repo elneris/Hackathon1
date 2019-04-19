@@ -55,6 +55,10 @@ class GameController extends AbstractController
 
         $resultFight = $this->getfightResult($usersWithProfil);
 
+        $this->insertFightResultInDn($resultFight, $_SESSION['id'], $idAdverse);
+
+
+
         return $this->twig->render('Game/fightResult.html.twig',
             [
                 'mainUser' => $usersWithProfil[0],
@@ -110,4 +114,25 @@ class GameController extends AbstractController
 
         return $skillTotal;
     }
+
+    public function insertFightResultInDn($resultFight ,$mainId, $idAdverse)
+    {
+        $userManager = new UserManager();
+
+        if ($resultFight[0] > $resultFight[1]) {
+            $userManager->addPointIfWin($mainId);
+            $userManager->addPointInPoint($mainId);
+            $userManager->addPointIfLoose($idAdverse);
+        } elseif ($resultFight[0] < $resultFight[1]) {
+            $userManager->addPointIfWin($idAdverse);
+            $userManager->addPointInPoint($idAdverse);
+            $userManager->addPointIfLoose($mainId);
+        } else {
+            $userManager->addPointIfEqual($mainId);
+            $userManager->addPointIfEqual($idAdverse);
+            $userManager->addPointInPoint($mainId);
+            $userManager->addPointInPoint($idAdverse);
+        }
+    }
+
 }
