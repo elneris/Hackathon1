@@ -15,8 +15,13 @@ class ProfileController extends AbstractController
             header('Location: /Login/index');
             exit;
         }
-        $result = [];
         $userManager = new UserManager();
+
+        if(isset($_POST['id'])){
+            $userManager->update($_POST['id'],$_SESSION['id']);
+        }
+        $result = [];
+
         $user = $userManager->selectOneById($_SESSION['id']);
         $apiUser = $userManager->selectCharactersById($user['id_character']);
 
@@ -29,7 +34,23 @@ class ProfileController extends AbstractController
 
         $result[] = $userAll;
 
-        return $this->twig->render('Profile/index.html.twig', ['user' => $result,'skill'=>$results,'session'=>$_SESSION]);
+        $eggsManager = new EggManager();
+        $eggs = $eggsManager->countEggs();
+        foreach ($eggs as $egg => $value){
+            if ($value['id_user'] == $_SESSION['id']){
+                $countEggs = $value['COUNT(id_egg)'];
+            }
+        }
+        $random = [];
+        $randomManager = new UserManager();
+        $random[0] = $randomManager->selectCharactersRandom();
+        $random[1] = $randomManager->selectCharactersRandom();
+        $random[2] = $randomManager->selectCharactersRandom();
+        $random[3] = $randomManager->selectCharactersRandom();
+        $random[4] = $randomManager->selectCharactersRandom();
+        $random[5] = $randomManager->selectCharactersRandom();
+
+        return $this->twig->render('Profile/index.html.twig', ['random'=>$random,'countEggs'=>$countEggs,'user' => $result,'skill'=>$results,'session'=>$_SESSION]);
     }
 
     public function egg()

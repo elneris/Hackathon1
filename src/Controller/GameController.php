@@ -40,6 +40,10 @@ class GameController extends AbstractController
             header('Location: /Login/index');
             exit;
         }
+        if ($idAdverse == $_SESSION['id']){
+            header('Location: /Error/404');
+            exit;
+        }
         $userManager = new UserManager();
 
         $mainUser = $userManager->selectIdAndLoginById($_SESSION['id']);

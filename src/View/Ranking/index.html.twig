@@ -20,7 +20,7 @@
                             <a href="/#users"> <img src="/assets/images/icone/{{ top }}.png" ></a>
                         </div>
                         <div class="description">
-                            <h3> {{ user.login }} </h3>
+                            <h3> {{ user.login | capitalize }} </h3>
                             <h5> <strong> {{ user.point}} PTS <br><hr>
                                     </strong></h5>
                             <p></p>
@@ -42,7 +42,7 @@
                             <div class="description">
                                 <ul>
                                     <li>
-                                <h3> {{ tenuser.login }} </h3>
+                                <h3> {{ tenuser.login | capitalize }} </h3>
                                 <h5> <strong> {{ tenuser.point }} PTS <hr></strong></h5>
                                     </li>
                                 </ul>
