@@ -121,6 +121,7 @@ h1{
   opacity:0.5;
 }
 
+
 .card-block{
   text-align: left;
 }
@@ -157,4 +158,15 @@ h1{
   box-shadow: none;
   width: 300px;
   height: 300px;
-}
+
+
+/**********************************/
+/*********** Fight Result *********/
+/**********************************/
+.img-result
+{
+  position: absolute;
+  width: 60%;
+  top: 10%;
+  left:10%;
+  z-index: 20;
