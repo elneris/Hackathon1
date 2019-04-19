@@ -199,3 +199,16 @@ h1{
   border: 3px solid grey;
   box-shadow: 3px 5px 5px darkgrey;
 }
+
+.oeuf{
+  left: 100px;
+  position: absolute;
+  bottom: 430px;
+}
+
+.oeuf3{
+  position: absolute;
+  top: 540px;
+  right: 0;
+}
+
