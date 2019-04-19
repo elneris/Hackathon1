@@ -251,6 +251,28 @@ img.egg-have {
   width:12%;
 }
 
+
+/**********************************/
+/*********** Ranking *********/
+/**********************************/
+
+.text-ranking{
+  text-align: center;
+  font-weight: bold;
+}
+.ranking-list{
+  list-style: none;
+}
+.ranking{
+  font-size: 20px;
+  line-height: 14px;
+}
+.background-ranking{
+  background-image: url("/assets/images/backgroundclassement.jpg");
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
 .cardtop img{
   width: 40%;
 }
@@ -263,3 +285,4 @@ img.egg-have {
   }
 
 }
+

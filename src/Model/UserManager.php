@@ -45,7 +45,7 @@ class UserManager extends AbstractManager
 
     public function tenUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 10")->fetchAll();
+        return $this->pdo->query("SELECT login, point, win, loose, equal, egg FROM $this->table ORDER BY point DESC LIMIT 10")->fetchAll();
     }
 
 
@@ -109,6 +109,7 @@ class UserManager extends AbstractManager
 
         return $statement->fetch();
     }
+
     public function update($item,$id)
     {
 
