@@ -10,15 +10,15 @@
                 <li {% if pageIndex %}class="active"{% endif %}><a href="/Game/selectAdverse">Défier un joueur</a></li>
                 {% if session %}
                         {% if session.login %}
-                            <li {% if pageMember %}class="active"{% endif %}><a href="/Profile/index">Page Profil</a></li>
+                            <li {% if pageMember %}class="active"{% endif %}><a href="/Profile/index">Mon profil</a></li>
                         {% endif %}
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav pull-right">
                 {% if session.login %}
-                    <li><a class="btn" href="/Login/logout">Se Déconnecter</a></li>
+                    <li><a class="btn" href="/Login/logout">Se déconnecter</a></li>
                 {% else %}
-                    <li><a class="btn" href="/Login/index">Se Connecter</a></li>
+                    <li><a class="btn" href="/Login/index">Se connecter</a></li>
                 {% endif %}
                 {% if session == false %}
                 <li><a class="btn" href="/register/index">S'inscrire</a></li>

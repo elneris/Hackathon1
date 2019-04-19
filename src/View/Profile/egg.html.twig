@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Eggs</h1>
+        <div class="row">
+            {% for egg in userEggs %}
+                <img class="egg-have col-6" src="{{ egg.image }}">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

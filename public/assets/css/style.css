@@ -1,11 +1,38 @@
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   padding: 0;
   margin: 0;
+}
+
+
+.lead{
+  padding-bottom: 0;
+}
+
+footer.block-footer{
+  margin-top: 40px;
+}
+
+.cloche{
+  margin-top: 20px;
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
+  color: whitesmoke;
+  font-size: 1.4em;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+  border: 1px  solid;
+  transition: 0.7s;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 25px;
 }
 
 #notfound {
@@ -19,8 +46,8 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -85,7 +112,7 @@ body {
   }
 
   .notfound .notfound-404 h1 {
-      font-size: 122px;
+    font-size: 122px;
   }
 }
 
@@ -105,6 +132,7 @@ h1{
   margin: 0;
   text-align: center;
   padding-bottom: 10px;
+  background-color:white;
 }
 
 
@@ -112,10 +140,11 @@ h1{
   width: 100%;
   height: 200px;
   border:1px solid grey;
+;
 }
 .card{
   margin-top: 25px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5px;
 }
 .card:hover {
@@ -200,6 +229,15 @@ h1{
   box-shadow: 3px 5px 5px darkgrey;
 }
 
+
+/**********************************/
+/********** Page Egg **************/
+/**********************************/
+
+img.egg-have {
+  width: 10%;
+  margin-bottom: 30px;
+}
 .oeuf{
   left: 100px;
   position: absolute;
@@ -210,7 +248,9 @@ h1{
   position: absolute;
   top: 540px;
   right: 0;
+  width:12%;
 }
+
 
 /**********************************/
 /*********** Ranking *********/
@@ -232,3 +272,17 @@ h1{
   background-size: cover;
   background-repeat:no-repeat;
 }
+
+.cardtop img{
+  width: 40%;
+}
+
+@media (max-width: 640px) {
+  .oeuf3 {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+
+}
+

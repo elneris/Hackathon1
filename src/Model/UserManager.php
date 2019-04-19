@@ -109,10 +109,15 @@ class UserManager extends AbstractManager
 
         return $statement->fetch();
     }
-    public function getStatUser()
+
+    public function update($item,$id)
     {
 
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE $this->table SET id_character =:character WHERE id=:id");
+        $statement->bindValue(':character', $item, \PDO::PARAM_STR);
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
-
-
 }

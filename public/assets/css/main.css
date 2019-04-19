@@ -1,6 +1,6 @@
 /* Header */
 
-#head { background:#181015 url( ../images/bg_header.jpg) no-repeat; background-size: 100%; min-height:520px; text-align: center; padding-top:240px; color:white; font-family:"Open sans", Helvetica, Arial; font-weight:300; }
+#head { background:#181015 url( ../images/fond.jpg) no-repeat; background-size: 100%; min-height:520px; text-align: center; padding-top:240px; color:white; font-family:"Open sans", Helvetica, Arial; font-weight:300; }
 #head.secondary { height:100px; min-height: 100px; padding-top:0px; }
 	#head .lead { font-family:"Open sans", Helvetica, Arial; font-size:44px; margin-bottom:6px; color:white; line-height:1.15em; } 
 	#head .tagline { color:rgba(255,255,255,0.75); margin-bottom:25px; }
@@ -226,4 +226,17 @@ img.pull-left { margin-right: 10px; }
 		.footer2 p { margin: 0; }
 
 	.widget-simplenav { margin-left:-5px; }		
-	.widget-simplenav a{ margin:0 5px; }		
+	.widget-simplenav a{ margin:0 5px; }
+
+.oeufs{
+	right: 576px;
+	position: relative;
+	top: -10px;
+}
+
+.top-space{
+	background-color: #2ce2e530;
+	margin-bottom: 30px;
+}
+
+

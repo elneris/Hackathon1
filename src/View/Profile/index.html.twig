@@ -24,21 +24,21 @@
                                         </div>
                                         <div class="col-sm-6 col-md-7">
                                             <div class="about-info">
-                                                <p><span class="title-s">Login: </span> <span>{{ id.login }}</span></p>
-                                                <p><span class="title-s">Character Name: </span>
+                                                <p><span class="title-s">Pseudo : </span> <span>{{ id.login }}</span></p>
+                                                <p><span class="title-s">Personnage : </span>
                                                     <span>{{ id.name }}</span></p>
-                                                <p><span class="title-s">Gender: </span>
+                                                <p><span class="title-s">Genre : </span>
                                                     <span>{{ id.gender }}</span></p>
-                                                <p><span class="title-s">Species: </span>
+                                                <p><span class="title-s">Race : </span>
                                                     <span>{{ id.species }}</span></p>
-                                                <p><span class="title-s">Origin: </span>
+                                                <p><span class="title-s">Origine : </span>
                                                     <span>{{ id.origin }}</span></p>
 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="skill-mf">
-                                        <p class="title-s">Skill</p>
+                                        <p class="title-s">Skills</p>
                                         {% for skil in skill %}
                                         <span>{{ skil.0 }}</span> <span class="pull-right">{{ skil.1 }}</span>
                                         <div class="progress">
@@ -56,23 +56,23 @@
                                                 Mes Stats
                                             </h5>
                                         </div>
-                                        <p><span class="title-s">Victoire : </span>
+                                        <p><span class="title-s">Victoires : </span>
                                             <span>{{ id.win }}</span></p>
-                                        <p><span class="title-s">Défaite : </span>
+                                        <p><span class="title-s">Défaites : </span>
                                             <span>{{ id.loose }}</span></p>
-                                        <p><span class="title-s">Match Nul : </span>
+                                        <p><span class="title-s">Match Nuls : </span>
                                             <span>{{ id.equal }}</span></p>
-                                        <p><span class="title-s">Total Game : </span>
+                                        <p><span class="title-s">Parties jouées : </span>
                                             <span>{{ id.win + id.loose + id.equal }}</span></p>
-                                        <p><span class="title-s">Total PTS : </span>
+                                        <p><span class="title-s">Total Points : </span>
                                             <span>{{ id.point }}</span></p>
-                                        <p><span class="title-s">Personnage acquis : </span>
-                                            <span>5</span></p>
-                                        <p><span class="title-s">Collection Eggs : </span>
-                                            <span>{{ id.egg }}</span></p>
+                                        <p><span class="title-s">Personnages acquis : </span>
+                                            <span>6</span></p>
+                                        <p><span class="title-s">Eggs gagnés : </span>
+                                            <span>{{ countEggs }}</span></p>
 
                                         <!-- Button trigger modal -->
-                                        <a href="" class="btn btn-primary" >
+                                        <a href="/profile/egg" class="btn btn-primary" >
                                             Eggs
                                         </a>
                                     </div>
@@ -102,81 +102,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                {% for randoms in random %}
+                <form method="post" action="">
+                    <div class="col-md-4 justify-content-center">
                     <div class="service-box">
                         <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-egg"></i></span>
+                             <span class="ico-circle"><i class="ion-egg"></i></span>
                         </div>
                         <div class="service-content">
-                            <h2 class="s-title">Name</h2>
+                            <h2 class="s-title">{{ randoms.name }}</h2>
                             <ul class="s-description">
-                                <li>Skill 1</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul>
-                        </div>
+                                <li>{{ randoms.species }}</li>
+                                <li>{{ randoms.origin }}</li>
+                                <li>{{ randoms.gender }}</li>
+                            </ul><input name="id" type="hidden" value="{{ randoms.id }}">
+                        </div><button class="btn btn-action btn-lg" type="submit" name="submit" >SELECTIONNER</button>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-egg"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Name</h2>
-                            <ul class="s-description">
-                                <li>Skill 1</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-egg"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Name</h2>
-                            <ul class="s-description">
-                                <li>Skill 1</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-egg"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Name</h2>
-                            <ul class="s-description">
-                                <li>Skill 1</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-box">
-                        <div class="service-ico">
-                            <span class="ico-circle"><i class="ion-egg"></i></span>
-                        </div>
-                        <div class="service-content">
-                            <h2 class="s-title">Name</h2>
-                            <ul class="s-description">
-                                <li>Skill 1</li>
-                                <li>Skill 2</li>
-                                <li>Skill 3</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                </form>
+                    {% endfor %}
             </div>
         </div>
     </section>
@@ -203,7 +147,7 @@
                         </div>
                         <div class="counter-num">
                             <p class="counter">{{ id.loose }}</p>
-                            <span class="counter-text">DEFAITE</span>
+                            <span class="counter-text">DEFAITES</span>
                         </div>
                     </div>
                 </div>
@@ -224,7 +168,7 @@
                             <span class="ico-circle"><i class="ion-egg"></i></span>
                         </div>
                         <div class="counter-num">
-                            <p class="counter">{{ id.egg }}</p>
+                            <p class="counter">{{ countEggs }}</p>
                             <span class="counter-text">EGGS</span>
                         </div>
                     </div>
