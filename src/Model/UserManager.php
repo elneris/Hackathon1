@@ -51,7 +51,7 @@ class UserManager extends AbstractManager
 
     public function randomUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 3" )->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 4" )->fetchAll();
 
     }
 
@@ -62,7 +62,7 @@ class UserManager extends AbstractManager
 
     public function selectIdAndLoginById($id)
     {
-        return $this->pdo->query("SELECT id,login,id_character FROM $this->table WHERE id = $id")->fetch();
+        return $this->pdo->query("SELECT id,login,id_character,point FROM $this->table WHERE id = $id")->fetch();
     }
 
     public function addPointIfWin($id)

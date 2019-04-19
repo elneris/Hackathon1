@@ -28,8 +28,29 @@ class HomeController extends AbstractController
         $bestUsers = $userManager->bestUsers();
 
         $randomUsers = $userManager->randomUsers() ;
+        $result = [];
+        $result1 = [];
 
-        return $this->twig->render('Home/index.html.twig',['session'=>$_SESSION, 'users'=>$bestUsers,'randomUsers'=>$randomUsers]);
+        foreach ($randomUsers as $randomUser) {
+            $allUsers = $userManager->selectIdAndLoginById($randomUser['id']);
+
+            $apiUser = $userManager->selectCharactersById($allUsers['id_character']);
+
+            $user = (object) array_merge((array) $apiUser, (array) $allUsers);
+
+            $result[] = $user;
+        }
+        foreach ($bestUsers as $bestUser) {
+            $allBestUsers = $userManager->selectIdAndLoginById($bestUser['id']);
+
+            $apiUser = $userManager->selectCharactersById($allBestUsers['id_character']);
+
+            $user1 = (object) array_merge((array) $apiUser, (array) $allBestUsers);
+
+            $result1[] = $user1;
+        }
+
+        return $this->twig->render('Home/index.html.twig',['info1'=>$result1,'info'=>$result,'session'=>$_SESSION, 'users'=>$bestUsers,'randomUsers'=>$randomUsers]);
     }
 
 }

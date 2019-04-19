@@ -10,11 +10,19 @@ class GameController extends AbstractController
 {
     public function start()
     {
+        if (!isset($_SESSION['login'])) {
+            header('Location: /Login/index');
+            exit;
+        }
         return $this->twig->render('Workspace/fight.html.twig');
     }
 
     public function selectAdverse()
     {
+        if (!isset($_SESSION['login'])) {
+            header('Location: /Login/index');
+            exit;
+        }
         $userManager = new UserManager();
 
         $allUsers = $userManager->selectAllWithIdAndLogin();
@@ -27,6 +35,10 @@ class GameController extends AbstractController
     public function fight($idAdverse)
     {
 
+        if (!isset($_SESSION['login'])) {
+            header('Location: /Login/index');
+            exit;
+        }
         $userManager = new UserManager();
 
         $mainUser = $userManager->selectIdAndLoginById($_SESSION['id']);
@@ -43,6 +55,10 @@ class GameController extends AbstractController
     public function fightResult($idAdverse)
     {
 
+        if (!isset($_SESSION['login'])) {
+            header('Location: /Login/index');
+            exit;
+        }
         $userManager = new UserManager();
 
         $mainUser = $userManager->selectIdAndLoginById($_SESSION['id']);
