@@ -177,7 +177,7 @@ class GameController extends AbstractController
 
     public function isRightEgg($id)
     {
-        $stepGif = 8;
+        $stepGif = 9;
         $userManager = new UserManager();
 
         $userPoint = $userManager->getPointById($id);
