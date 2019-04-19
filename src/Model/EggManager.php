@@ -42,7 +42,7 @@ class EggManager extends AbstractManager
         }
 
         return $allEgg;
-
+    }
     public function countEggs()
     {
         return $this->pdo->query("SELECT COUNT(id_egg),id_user FROM $this->table GROUP BY id_user")->fetchAll();
