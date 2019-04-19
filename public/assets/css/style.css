@@ -96,6 +96,7 @@ body {
 h1{
   text-align:center;
   padding-bottom:80px;
+  padding-top: 35px;
 }
 .card h5 {
   font-size: 1.28571429em;
@@ -103,10 +104,18 @@ h1{
   line-height: 1.2857em;
   margin: 0;
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 .card img{
   width: 100%;
   height: 200px;
+  background: red ;
+}
+.card{
+  margin-top: 25px;
+  border: 1px solid black;
+}
+.card:hover img{
+  opacity:0.5;
 }
