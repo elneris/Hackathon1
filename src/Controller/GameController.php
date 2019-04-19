@@ -40,6 +40,29 @@ class GameController extends AbstractController
         return $this->twig->render('Game/fight.html.twig', ['mainUser' => $usersWithProfil[0], 'userAdverse' => $usersWithProfil[1]]);
     }
 
+    public function fightResult($idAdverse)
+    {
+
+        $userManager = new UserManager();
+
+        $mainUser = $userManager->selectIdAndLoginById($_SESSION['id']);
+        $userAdverse = $userManager->selectIdAndLoginById($idAdverse);
+
+        $allUsers[0]= $mainUser;
+        $allUsers[1] = $userAdverse;
+
+        $usersWithProfil = $this->getAllUserPersoById($allUsers);
+
+        $resultFight = $this->getfightResult($usersWithProfil);
+
+        return $this->twig->render('Game/fightResult.html.twig',
+            [
+                'mainUser' => $usersWithProfil[0],
+                'userAdverse' => $usersWithProfil[1],
+                'resultFight' => $resultFight
+            ]);
+    }
+
 
 
     /******** Method Logic **********/
@@ -56,8 +79,35 @@ class GameController extends AbstractController
             $user = (object) array_merge((array) $apiUser, (array) $dbUser);
 
             $result[] = $user;
-
         }
         return $result;
+    }
+
+    public function getFightResult($users)
+    {
+        $i = 0;
+        $score = [];
+
+        foreach ($users as $user) {
+            $score[$i] = $this->getScorePerso($user);
+            $i += 1;
+        }
+
+        return $score;
+    }
+
+    public function getScorePerso($user)
+    {
+        $skillTotal = 0;
+        $userSkills = $user->skills;
+
+        foreach ($userSkills as $skill) {
+            $skill = explode(':', $skill);
+            $skillTotal += $skill[1];
+        }
+
+        $skillTotal += rand(0, 30);
+
+        return $skillTotal;
     }
 }
