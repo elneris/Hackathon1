@@ -39,6 +39,8 @@ class ProfileController extends AbstractController
         foreach ($eggs as $egg => $value){
             if ($value['id_user'] == $_SESSION['id']){
                 $countEggs = $value['COUNT(id_egg)'];
+            }else {
+                $countEggs = 0;
             }
         }
         $random = [];
