@@ -122,6 +122,44 @@ h1{
 }
 
 
+.card-block{
+  text-align: left;
+}
+
+.btn_fight{
+  margin-left: 490px;
+  border: 3px solid grey;
+  box-shadow: 5px 0px 25px -9px;
+  border-radius: 3px;
+  padding: 10px;
+  text-decoration: none;
+  background:grey;
+  color: white;
+}
+.btn_fight:hover{
+  background:whitesmoke;
+
+}
+.titleName{
+  position: relative;
+  left: 108px;
+  font-size: 1.5em;
+}
+
+.carte img{
+  border: 3px solid grey;
+  box-shadow: 3px 5px 5px darkgrey;
+  width: 300px;
+  height: 300px;
+}
+
+.carte :nth-child(3) img{
+  border: none;
+  box-shadow: none;
+  width: 300px;
+  height: 300px;
+
+
 /**********************************/
 /*********** Fight Result *********/
 /**********************************/
@@ -132,4 +170,3 @@ h1{
   top: 10%;
   left:10%;
   z-index: 20;
-}
