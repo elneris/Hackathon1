@@ -25,6 +25,10 @@ footer.block-footer{
   color: whitesmoke;
   font-size: 1.4em;
 }
+.navbar-inverse .navbar-nav > li > a:hover {
+  border: 1px  solid;
+  transition: 0.7s;
+}
 .nav>li>a {
   position: relative;
   display: block;
