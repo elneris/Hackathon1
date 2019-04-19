@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Model\EggManager;
 use App\Model\UserManager;
 
 class ProfileController extends AbstractController
@@ -29,5 +30,16 @@ class ProfileController extends AbstractController
         $result[] = $userAll;
 
         return $this->twig->render('Profile/index.html.twig', ['user' => $result,'skill'=>$results,'session'=>$_SESSION]);
+    }
+
+    public function egg()
+    {
+
+        $eggManager = new EggManager('egg');
+        $eggs = $eggManager->selectEgg();
+
+        $userEggs = $eggManager->getAllEggUserWithImg($_SESSION['id']);
+
+        return $this->twig->render('Profile/egg.html.twig', ['userEggs' => $userEggs]);
     }
 }

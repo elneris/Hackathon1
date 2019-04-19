@@ -110,5 +110,4 @@ class UserManager extends AbstractManager
         return $statement->fetch();
     }
 
-
 }
