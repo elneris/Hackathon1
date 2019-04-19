@@ -14,24 +14,23 @@
             </div>
             <div class="row animate-in" data-anim-type="fade-in-up">
                 {% set top = 0 %}
-                {% for user in users %}
+                {% for infos1 in info1 %}
                     {% set top = top + 1 %}
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="col-12 col-md-4">
                         <div class="team-wrapper">
-                            <div class="team-inner"
-                                 style="background-image: url('/assets/images/users/{{ user.id }}.jpg')">
-                                <a href="/#users"> <img src="/assets/images/{{ top }}.jpg"></a>
+                            <div class="cardTop-rank"> <img src="/assets/images/{{ top }}.png">
                             </div>
                             <div class="description">
-                                <h3> {{ user.login | capitalize }} </h3>
-                                <h5><strong> {{ user.point }} PTS <br>
-                                        <hr>
-                                    </strong></h5>
+                                <h3> {{ infos1.login | capitalize }} </h3>
+                                <h5> <strong> {{ infos1.point }} PTS <br><hr>
+                                        {{ infos1.login | capitalize }}</strong></h5>
                                 <p></p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
+            </div>
+        </div>
     </section>
     <section>
         <h2 class="text-ranking">            Classement total        </h2>
