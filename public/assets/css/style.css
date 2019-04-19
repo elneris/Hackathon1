@@ -116,11 +116,12 @@ h1{
 .card{
   margin-top: 25px;
   border: 1px solid black;
+  border-radius: 5px;
 }
-.card:hover img{
-  opacity:0.5;
+.card:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
 }
-
 
 .card-block{
   text-align: left;
