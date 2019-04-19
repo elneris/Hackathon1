@@ -32,17 +32,16 @@
                 </div>
                 <div class="row animate-in" data-anim-type="fade-in-up">
                     {% set top = 0 %}
-                    {% for user in users %}
+                    {% for infos1 in info1 %}
                         {% set top = top + 1 %}
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <div class="col-12 col-md-4">
                         <div class="team-wrapper">
-                            <div class="team-inner" style="background-image: url('/assets/images/users/{{ user.id }}.jpg')" >
-                                <a href="/#users"> <img src="/assets/images/icone/{{ top }}.png" ></a>
+                            <div class="card"> <img src="{{ infos1.image }}">
                             </div>
                             <div class="description">
-                                <h3> {{ user.login }} </h3>
-                                <h5> <strong> {{ user.point }} PTS <br><hr>
-                                        {{ user.login }}</strong></h5>
+                                <h3> {{ infos1.login }} </h3>
+                                <h5> <strong> {{ infos1.point }} PTS <br><hr>
+                                        {{ infos1.login }}</strong></h5>
                                 <p></p>
                             </div>
                         </div>
@@ -56,23 +55,15 @@
         <div class="container">
             <h3 class="text-center thin">VOUS CHERCHEZ / VOUS DEFIEZ</h3>
             <div class="row">
-                {% for randomUser in randomUsers %}
-                    {% set top = top + 1 %}
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                        <div class="team-wrapper">
-                            <div class="team-inner" style="background-image: url('/assets/images/users/{{ user.id }}.jpg')" >
-                                <a href="/#users"> <img src="/assets/images/icone/{{ top }}.png" ></a>
-                            </div>
-                            <div class="description">
-                                <h3> {{ randomUser.login }} </h3>
-                                <h5> <strong> {{ randomUser.point }} PTS <br><hr>
-                                        {{ randomUser.login }}</strong></h5>
-                                <p>
-
-                                </p>
+                {% for infos in info %}
+                        <div class="col-12 col-md-3">
+                            <div class="card">
+                                <a href="/game/fight/{{ infos.id }}"><img class="card-img-top" src="{{ infos.image }}"></a>
+                                <div class="card-block">
+                                    <h5 class="text-bold">{{ infos.login }}</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 {% endfor %}
             </div>
         </div>
@@ -82,41 +73,20 @@
         <br>
         <div class="row">
             <div class="col-sm-6">
-                <h3>Pourquoi Servyy ?</h3>
+                <h3>BATTLEGGS</h3>
                 <p>
-                    Depuis 2018, de nouvelles alternatives arrivent grâce à l’essor des nouvelles technologies, et au changement des modes de vies et de consommation.
-                    Le service entre particulier est une réponse intelligente à la crise économique : grâce à cette nouvelle pratique, des milliers de particuliers peuvent désormais rendre service dans leur quartier tout en échangeant leurs compétences avec d’autres particuliers.
-                    Le principe est simple: mettre en relation un prestataire (une personne proposant un coup de main pour des petits services en bricolage, déménagement, nettoyage...) et un particuler en toute sécurité et convivialité.
+                    Venez défier les plus grand chasseurs d'Eggs au monde à travers une expérience ludique ! Sélectionnez votre personnage parmi un choix varié et affrontez des milliers d'utilisateurs en ligne.
+                    Arriverez-vous à récuperer la collection complète des Eggs ?
                 </p>
             </div>
             <div class="col-sm-6">
-                <h3>La confiance et le partage</h3>
+                <h3>Comment ça marche ?</h3>
                 <p>
-                    Les Servyers sont évalués après chaque mission effectuée. Ces notes de confiance ont deux objectifs : rassurer les particuliers et permettre aux servyers de montrer aux autres membres qu’ils sont fiables et compétents. On vous souhaite la bienvenue dans une nouvelle ère, celle de la confiance et du partage de compétences entre membres de la communauté !
+                    1. Inscrivez-vous et cherchez un adversaire à votre taille <br>
+                    2. Défiez les autres memebre à travers des combats redoutables <br>
+                    3. Collectionnez le maximum d'Eggs et montrez votre puissance !
                 </p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <h3>Comment çà marche ?</h3>
-                <p>
-                    1. Inscrivez vous et cherchez le servyer qui correspond a votre besoin <br>
-                    2. Les servyers disponibles et compétents vous proposent leurs services <br>
-                    3. Evaluez et laissez un avis à votre servyer une fois le job terminé
-                </p>
-            </div>
-            <div class="col-sm-6">
-                <h3>Vous voulez proposez vos services ?</h3>
-                <p>
-                    1. Inscrivez vous et renseignez vos compétences <br>
-                    2. Un administrateur devra confirmer votre compte <br>
-                    3. Attendez le contact d'un autre servyer
-                </p>
-            </div>
-        </div>
-        <div class="jumbotron top-space">
-            <h4>Si vous avez d'autres questions, n'hésitez pas à contacter un administrateur grâce au formulaire de contact !</h4>
-            <p class="text-right"><a class="btn btn-primary btn-large" href="/contact/index">Contact »</a></p>
         </div>
     </div>
 {% endblock %}

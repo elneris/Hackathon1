@@ -40,12 +40,18 @@ class UserManager extends AbstractManager
     }
     public function bestUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3" )->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3")->fetchAll();
     }
+
+    public function tenUsers()
+    {
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 10")->fetchAll();
+    }
+
 
     public function randomUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 3" )->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY RAND() LIMIT 4" )->fetchAll();
 
     }
 
@@ -56,7 +62,43 @@ class UserManager extends AbstractManager
 
     public function selectIdAndLoginById($id)
     {
-        return $this->pdo->query("SELECT id,login,id_character FROM $this->table WHERE id = $id")->fetch();
+        return $this->pdo->query("SELECT id,login,id_character,point FROM $this->table WHERE id = $id")->fetch();
+    }
+
+    public function addPointIfWin($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET win = win + 1 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function addPointIfLoose($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET loose = loose + 1 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function addPointIfEqual($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET equal = equal + 1 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
+
+    public function addPointInPoint($id)
+    {
+        $statement = $this->pdo->prepare("UPDATE $this->table SET point = point + 3 WHERE id=:id");
+
+        $statement->bindValue(':id', $id, \PDO::PARAM_INT);
+
+        return $statement->execute();
     }
 
 }
