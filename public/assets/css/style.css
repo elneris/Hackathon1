@@ -111,7 +111,7 @@ h1{
 .card img{
   width: 100%;
   height: 200px;
-  background: red ;
+  border:1px solid grey;
 }
 .card{
   margin-top: 25px;
@@ -138,7 +138,10 @@ h1{
 }
 .btn_fight:hover{
   background:whitesmoke;
-
+  transition: 0.5s;
+  text-decoration: none;
+  color: black;
+  border-color: transparent;
 }
 .titleName{
   position: relative;
@@ -153,20 +156,45 @@ h1{
   height: 300px;
 }
 
-.carte :nth-child(3) img{
+.carte :nth-child(3) img {
   border: none;
   box-shadow: none;
   width: 300px;
   height: 300px;
 
+}
 
 /**********************************/
 /*********** Fight Result *********/
 /**********************************/
-.img-result
-{
+.img-result {
   position: absolute;
   width: 60%;
   top: 10%;
-  left:10%;
+  left: 10%;
   z-index: 20;
+}
+
+.btn_rejouer{
+  margin-left: 490px;
+  border: 3px solid grey;
+  box-shadow: 5px 0px 25px -9px;
+  border-radius: 3px;
+  padding: 10px;
+  text-decoration: none;
+  background:grey;
+  color: white;
+}
+
+.btn_rejouer:hover{
+  background:whitesmoke;
+  transition: 0.5s;
+  text-decoration: none;
+  color: black;
+  border-color: transparent;
+}
+
+.img-profil img:first-child{
+  border: 3px solid grey;
+  box-shadow: 3px 5px 5px darkgrey;
+}
