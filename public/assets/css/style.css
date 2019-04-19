@@ -8,6 +8,15 @@ body {
   margin: 0;
 }
 
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
+  color: whitesmoke;
+  font-size: 1.4em;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 25px;
+}
 #notfound {
   position: relative;
   height: 100vh;
@@ -228,7 +237,7 @@ img.egg-have {
 @media (max-width: 640px) {
   .oeuf3 {
     position: relative;
-    top: 0px;
+    top: 0;
     right: 0;
   }
 
