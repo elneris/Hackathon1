@@ -40,8 +40,14 @@ class UserManager extends AbstractManager
     }
     public function bestUsers()
     {
-        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3" )->fetchAll();
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 3")->fetchAll();
     }
+
+    public function tenUsers()
+    {
+        return $this->pdo->query("SELECT * FROM $this->table ORDER BY point DESC LIMIT 10")->fetchAll();
+    }
+
 
     public function randomUsers()
     {
