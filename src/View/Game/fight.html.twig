@@ -9,8 +9,7 @@
             <div class="col-12 col-md-4"> <img src="{{ mainUser.image }}" alt="profil">  {{ mainUser.login }}</div>
             <div class="col-12 col col-md-4">VERSUS</div>
             <div class="col-12 col-md-4"> <img src="{{ userAdverse.image }}" alt="profil">  {{ userAdverse.login }}</div>
-            <a class="col-12 col-md-4" href="fightResult.html.twig">BOUTON COMBAT</a>
-
+            <a class="col-12 col-md-4" href="/game/fightResult/{{ userAdverse.id }}">BOUTON COMBAT</a>
         </div>
     </div>
 {% endblock %}
