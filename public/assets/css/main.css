@@ -226,4 +226,11 @@ img.pull-left { margin-right: 10px; }
 		.footer2 p { margin: 0; }
 
 	.widget-simplenav { margin-left:-5px; }		
-	.widget-simplenav a{ margin:0 5px; }		
+	.widget-simplenav a{ margin:0 5px; }
+
+.oeufs{
+	right: 576px;
+	position: relative;
+	top: -10px;
+}
+
