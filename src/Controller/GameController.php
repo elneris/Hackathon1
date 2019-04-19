@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Model\EggManager;
 use App\Model\UserManager;
 
 class GameController extends AbstractController
@@ -71,18 +72,16 @@ class GameController extends AbstractController
 
         $resultFight = $this->getfightResult($usersWithProfil);
 
-        $this->insertFightResultInDn($resultFight, $_SESSION['id'], $idAdverse);
-
-
+        $bonus = $this->insertFightResultInDn($resultFight, $_SESSION['id'], $idAdverse);
 
         return $this->twig->render('Game/fightResult.html.twig',
             [
                 'mainUser' => $usersWithProfil[0],
                 'userAdverse' => $usersWithProfil[1],
-                'resultFight' => $resultFight
+                'resultFight' => $resultFight,
+                'bonus' => $bonus,
             ]);
     }
-
 
 
     /******** Method Logic **********/
@@ -139,15 +138,48 @@ class GameController extends AbstractController
             $userManager->addPointIfWin($mainId);
             $userManager->addPointInPoint($mainId);
             $userManager->addPointIfLoose($idAdverse);
+
+            if ($this->isRightEgg($mainId)) {
+
+                $eggManager = new EggManager('egg');
+                $egg = $eggManager->selectEggRandom();
+
+                $eggManager->addEggByIdEgg($mainId, $egg->id);
+
+                return $egg;
+            }
         } elseif ($resultFight[0] < $resultFight[1]) {
             $userManager->addPointIfWin($idAdverse);
             $userManager->addPointInPoint($idAdverse);
             $userManager->addPointIfLoose($mainId);
+
+            if ($this->isRightEgg($idAdverse)) {
+
+                $eggManager = new EggManager('egg');
+                $egg = $eggManager->selectEggRandom();
+
+                $eggManager->addEggByIdEgg($idAdverse, $egg->id);
+
+            }
+
+            $this->isRightEgg($idAdverse);
         } else {
             $userManager->addPointIfEqual($mainId);
             $userManager->addPointIfEqual($idAdverse);
             $userManager->addPointInPoint($mainId);
             $userManager->addPointInPoint($idAdverse);
+        }
+    }
+
+    public function isRightEgg($id)
+    {
+        $stepGif = 8;
+        $userManager = new UserManager();
+
+        $userPoint = $userManager->getPointById($id);
+
+        if (($userPoint['point'] % $stepGif) == 0){
+            return true;
         }
     }
 

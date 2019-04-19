@@ -94,11 +94,21 @@ class UserManager extends AbstractManager
 
     public function addPointInPoint($id)
     {
-        $statement = $this->pdo->prepare("UPDATE $this->table SET point = point + 3 WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE $this->table SET point = point + 2 WHERE id=:id");
 
         $statement->bindValue(':id', $id, \PDO::PARAM_INT);
 
         return $statement->execute();
     }
+
+    public function getPointById($id)
+    {
+        $statement = $this->pdo->prepare("SELECT point FROM $this->table WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
+
 
 }
