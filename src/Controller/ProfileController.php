@@ -52,4 +52,15 @@ class ProfileController extends AbstractController
 
         return $this->twig->render('Profile/index.html.twig', ['random'=>$random,'countEggs'=>$countEggs,'user' => $result,'skill'=>$results,'session'=>$_SESSION]);
     }
+
+    public function egg()
+    {
+
+        $eggManager = new EggManager('egg');
+        $eggs = $eggManager->selectEgg();
+
+        $userEggs = $eggManager->getAllEggUserWithImg($_SESSION['id']);
+
+        return $this->twig->render('Profile/egg.html.twig', ['userEggs' => $userEggs]);
+    }
 }

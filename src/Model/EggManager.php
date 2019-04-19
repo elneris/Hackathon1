@@ -24,9 +24,29 @@ class EggManager extends AbstractManager
         return $statement->execute();
     }
 
+
+    public function getAllEgg($id)
+    {
+        return $this->pdo->query("SELECT id_egg FROM $this->table WHERE id_user = $id")->fetchAll();
+    }
+
+    public function getAllEggUserWithImg($id)
+    {
+        $allEgg = [];
+
+        $allUserEgg = $this->getAllEgg($id);
+
+        foreach ($allUserEgg as $egg) {
+
+            $allEgg[] = $this->selectEggById($egg['id_egg']);
+        }
+
+        return $allEgg;
+
     public function countEggs()
     {
         return $this->pdo->query("SELECT COUNT(id_egg),id_user FROM $this->table GROUP BY id_user")->fetchAll();
+
     }
 
 }
