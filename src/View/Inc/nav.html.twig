@@ -20,7 +20,9 @@
                 {% else %}
                     <li><a class="btn" href="/Login/index">Se Connecter</a></li>
                 {% endif %}
+                {% if session == false %}
                 <li><a class="btn" href="/register/index">S'inscrire</a></li>
+                {% endif %}
 
             </ul>
         </div>
