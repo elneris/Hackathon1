@@ -11,7 +11,7 @@ class ProfileController extends AbstractController
     public function index()
     {
         if (!isset($_SESSION['login'])) {
-            header('Location: /Home/index');
+            header('Location: /Login/index');
             exit;
         }
         $result = [];
