@@ -2,11 +2,15 @@
 
 ## Projet réalisé lors du Hackathon 24h Avril 2019 - Prix : Vainqueur WCS Bordeaux Promo Février 2019
 
-## Description
+### Description
 
 Réalisé un site en utilisant une API sur le thème de pâque.
 
-## Equipe
+### Demo
+
+https://battleggs.elneris.zd.fr/
+
+### Equipe
 
 - Laure Fraysse : Développeuse PHP
 - Elnéris Dang : Développeur PHP
