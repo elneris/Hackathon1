@@ -41,7 +41,7 @@ class Connection
      */
     public function __construct()
     {
-        $this->apiConnection = new Client(['base_uri' => 'http://easteregg.wildcodeschool.fr/api']);
+        $this->apiConnection = new Client(['base_uri' => 'https://tours.wilders.dev/api']);
         try {
             $this->pdoConnection = new PDO(
                 'mysql:host=' . APP_DB_HOST . '; dbname=' . APP_DB_NAME . '; charset=utf8',
